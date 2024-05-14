@@ -5,7 +5,11 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts"
+    "build": "tsc",
+    "dev:start": "nodemon ./src/index.ts",
+    "start": "node ./build/index.js",
+    "typeorm": "typeorm-ts-node-commonjs -d src/database/connection.ts",
+    "migrate:create": "npm run typeorm migration:generate"
   },
   "author": "",
   "license": "ISC",
@@ -31,8 +35,14 @@
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "nodemailer": "^6.9.3",
+    "nodemon": "^3.1.0",
     "redis": "^4.6.7",
+    "ts-node": "^10.9.2",
     "typedi": "^0.10.0",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "tsconfig-paths": "^4.2.0"
   }
 }
