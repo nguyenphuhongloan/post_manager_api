@@ -10,6 +10,6 @@ export class BaseEntity extends TypeOrmBaseEntity {
     @Column("int", { name: "UpdatedBy", default: 1 })
     updatedBy!: number;
 
-    @UpdateDateColumn({ name: "UpdatedDate", default: () => "CURRENT_TIMESTAMP" })
+    @UpdateDateColumn({ name: "UpdatedDate", default: () => "CURRENT_TIMESTAMP(6)" })
     updatedDate!: Date;
 }
