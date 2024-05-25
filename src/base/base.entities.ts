@@ -1,6 +1,6 @@
-import { BaseEntity, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity as TypeOrmBaseEntity, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-export class BaseEntities extends BaseEntity {
+export class BaseEntity extends TypeOrmBaseEntity {
     @Column("int", { name: "CreatedBy", default: 1, })
     createdBy!: number;
 

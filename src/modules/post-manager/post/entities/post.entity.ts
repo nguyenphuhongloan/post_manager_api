@@ -1,13 +1,13 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn, QueryFailedError } from "typeorm";
 import { Exclude, Expose, plainToInstance } from "class-transformer";
-import { BaseEntities } from "../../../../base/base.entities";
+import { BaseEntity } from "../../../../base/base.entities";
 import { proc, procName } from "../../../../database/procedure";
 import { Err } from "../../../../helpers/error";
 import MailMessage from "nodemailer/lib/mailer/mail-message";
 
 
 @Entity("posts")
-export class Post extends BaseEntities {
+export class Post extends BaseEntity {
     @Expose()
     @PrimaryGeneratedColumn({ name: "PostId" })
     postId!: number;
@@ -25,7 +25,7 @@ export class Post extends BaseEntities {
     thumbnail!: string;
 
     @Expose()
-    @Column("int", { name: "Category"})
+    @Column("int", { name: "Category" })
     category!: number;
 
     @Expose()
@@ -81,7 +81,7 @@ export class Post extends BaseEntities {
         const total = proc(procName.getPostsByCategory, [category, limit, offset, 1]);
         const res = await Promise.all([data, total]);
         const resData = Post.procToListPosts(res[0]);
-       
+
         return {
             data: resData,
             total: res[1]
@@ -129,7 +129,7 @@ export class Post extends BaseEntities {
 
     static statisticViewAndComment = async (limit: number, offset: number) => {
         const data = proc(procName.statisticPostViewsAndComments, [limit, offset, 0]);
-        const total = proc(procName.statisticPostViewsAndComments, [ limit, offset, 1]);
+        const total = proc(procName.statisticPostViewsAndComments, [limit, offset, 1]);
         const res = await Promise.all([data, total]);
         const resData = Post.procToListPosts(res[0]);
         return {

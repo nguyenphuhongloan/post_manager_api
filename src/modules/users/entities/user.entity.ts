@@ -1,5 +1,5 @@
 import { BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { BaseEntities } from "../../../base/base.entities";
+import { BaseEntity } from "../../../base/base.entities";
 import { Exclude, Expose, instanceToPlain, plainToInstance } from "class-transformer";
 import { MinLength } from "class-validator";
 import { proc, procName } from "../../../database/procedure";
@@ -16,7 +16,7 @@ export enum Gender {
 }
 
 @Entity("users")
-export class User extends BaseEntities {
+export class User extends BaseEntity {
     @Expose()
     @PrimaryGeneratedColumn({ name: "UserId" })
     userId!: number;

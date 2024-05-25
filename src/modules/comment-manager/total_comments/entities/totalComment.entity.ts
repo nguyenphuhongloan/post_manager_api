@@ -1,10 +1,10 @@
 import { Column, Entity } from "typeorm";
 import { plainToInstance } from "class-transformer";
-import { BaseEntities } from "../../../../base/base.entities";
+import { BaseEntity } from "../../../../base/base.entities";
 import { proc, procName } from "../../../../database/procedure";
 
 @Entity("total_comments")
-export class TotalComments extends BaseEntities {
+export class TotalComments extends BaseEntity {
     @Column("int", { name: "PostId", primary: true, })
     postId!: number;
 

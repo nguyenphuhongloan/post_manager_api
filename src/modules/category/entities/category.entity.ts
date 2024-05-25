@@ -1,9 +1,9 @@
 import { plainToInstance } from "class-transformer";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { BaseEntities } from "../../../base/base.entities";
+import { BaseEntity } from "../../../base/base.entities";
 
 @Entity("category")
-export class Category extends BaseEntities {
+export class Category extends BaseEntity {
     @PrimaryGeneratedColumn({ name: "CategoryId" })
     categoryId!: number;
 
@@ -12,7 +12,7 @@ export class Category extends BaseEntities {
 
     @Column("tinyint", { name: "IsDeleted" })
     isDeleted!: number;
-    
+
     static convert = <T>(data: T) => {
         return plainToInstance(Category, data, { strategy: "exposeAll", exposeUnsetFields: false });
     }

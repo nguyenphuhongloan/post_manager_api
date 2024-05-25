@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, QueryFailedError } from "typeorm";
 import { plainToInstance } from "class-transformer";
-import { BaseEntities } from "../../../../base/base.entities";
+import { BaseEntity } from "../../../../base/base.entities";
 import { proc, procName } from "../../../../database/procedure";
 import { Err } from "../../../../helpers/error";
 
@@ -11,7 +11,7 @@ export enum StatusComment {
 }
 
 @Entity("comments")
-export class Comment extends BaseEntities {
+export class Comment extends BaseEntity {
     @PrimaryGeneratedColumn({ name: "CommentId" })
     commentId!: number;
 

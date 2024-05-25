@@ -1,9 +1,9 @@
 import { plainToInstance } from "class-transformer";
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { BaseEntities } from "../../../../base/base.entities";
+import { BaseEntity } from "../../../../base/base.entities";
 
 @Entity("saved_posts")
-export class PostSaved extends BaseEntities {
+export class PostSaved extends BaseEntity {
     @PrimaryGeneratedColumn({ name: "Id" })
     id!: number;
 
